@@ -132,7 +132,7 @@ king-county-house-sales-analysis/
 │
 ├── king_county_house_sales_analysis.ipynb
 ├── README.md
-└── housing.csv
+
 ```
 Note: The notebook downloads the dataset automatically from the provided source URL. If the dataset is not included in the repository, running the notebook will create `housing.csv`.
 Skills Demonstrated
