@@ -1,161 +1,176 @@
-# DataAnalysis_Python
-King County House Sales Analysis
-Overview
-This project analyzes house sales in King County, Washington, including the Seattle area. The goal is to explore the housing dataset, clean and prepare the data, identify relationships between housing features and sale price, and build regression models to estimate house prices.
-The analysis uses Python-based data science tools including pandas, NumPy, seaborn, matplotlib, and scikit-learn.
-Dataset
-The dataset contains house sale records from King County, Washington for homes sold between May 2014 and May 2015.
-The dataset includes features such as:
-Sale price
-Number of bedrooms
-Number of bathrooms
-Square footage of living space
-Lot size
-Number of floors
-Waterfront status
-View rating
-House condition
-Grade
-Year built
-Year renovated
-Latitude and longitude
-Zip code
-The target variable for prediction is `price`.
-Project Objectives
-The main objectives of this project are to:
-Import and inspect the housing dataset
-Clean and prepare the data for analysis
-Handle missing values
-Explore relationships between house features and price
-Visualize important trends and patterns
-Build regression models to predict house prices
-Compare model performance using R² scores
-Tools and Libraries
-This project uses:
-Python
-pandas
-NumPy
-matplotlib
-seaborn
-scikit-learn
-Jupyter Notebook
-Project Workflow
-1. Importing and Inspecting the Data
-The dataset is loaded into a pandas DataFrame and inspected using methods such as:
-`head()`
-`dtypes`
-`describe()`
-This step helps understand the structure of the data, data types, and summary statistics.
-2. Data Wrangling
-Unnecessary identifier columns such as `id` and `Unnamed: 0` are removed because they do not contribute meaningful predictive value.
-Missing values are found in the following columns:
-`bedrooms`
-`bathrooms`
-The missing values are replaced with the mean value of each respective column.
-3. Exploratory Data Analysis
-Exploratory analysis is performed to better understand the dataset and identify important relationships.
-Key analysis steps include:
-Counting houses by number of floors
-Comparing prices for waterfront and non-waterfront homes using boxplots
-Analyzing the relationship between above-ground square footage and price
-Calculating feature correlations with house price
-Some of the features most strongly correlated with price include:
-`sqft_living`
-`grade`
-`sqft_above`
-`sqft_living15`
-`bathrooms`
-Model Development
-Several regression models are built and evaluated.
-Simple Linear Regression
-A simple linear regression model is trained using `sqft_living` to predict house price.
-R² score: approximately `0.493`
-Multiple Linear Regression
-A multiple linear regression model is trained using selected housing features:
-```python
-features = [
-    "floors",
-    "waterfront",
-    "lat",
-    "bedrooms",
-    "sqft_basement",
-    "view",
-    "bathrooms",
-    "sqft_living15",
-    "sqft_above",
-    "grade",
-    "sqft_living"
-]
-```
-R² score: approximately `0.658`
-Ridge Regression
-A Ridge regression model is trained using the selected feature set and evaluated on a test set.
-R² score: approximately `0.648`
-Polynomial Ridge Regression
-Polynomial features are generated using a second-degree polynomial transformation, then a Ridge regression model is trained.
-R² score: approximately `0.700`
-This was the best-performing model in the notebook.
-Results Summary
-Model	R² Score
-Linear Regression using longitude	0.000
-Simple Linear Regression using `sqft_living`	0.493
-Multiple Linear Regression	0.658
-Ridge Regression	0.648
-Polynomial Ridge Regression	0.700
-Key Findings
-`sqft_living` has the strongest correlation with house price among the numeric features analyzed.
-House grade, above-ground square footage, bathrooms, and nearby living space size are also strong predictors.
-Waterfront homes show clear price differences and outliers compared with non-waterfront homes.
-A polynomial Ridge regression model performed better than the simpler linear regression models.
-Using multiple features significantly improved prediction performance compared with using a single feature.
-How to Run the Project
-Clone this repository:
-```bash
-git clone https://github.com/your-username/king-county-house-sales-analysis.git
-```
-Navigate into the project folder:
-```bash
-cd king-county-house-sales-analysis
-```
-Install the required libraries:
-```bash
-pip install pandas numpy matplotlib seaborn scikit-learn requests
-```
-Open the Jupyter Notebook:
-```bash
-jupyter notebook king_county_house_sales_analysis.ipynb
-```
-Run the notebook cells from top to bottom.
-Repository Structure
+# King County House Sales Analysis
+
+## Project Overview
+
+This project analyzes house sales data from King County, Washington, including the Seattle area. The goal is to explore housing features, understand price patterns, and build regression models to estimate house prices.
+
+The analysis includes data inspection, data cleaning, exploratory data analysis, visualization, and machine learning model development using Python.
+
+## Dataset
+
+The dataset contains house sale records for King County, Washington, for homes sold between May 2014 and May 2015.
+
+Key features include:
+
+- Sale price
+- Number of bedrooms and bathrooms
+- Square footage of living space and lot size
+- Number of floors
+- Waterfront status
+- View rating
+- House condition and grade
+- Basement size
+- Latitude and longitude
+- Year built and renovation year
+
+The target variable for prediction is:
+
+- `price`
+
+## Project Objectives
+
+- Import and inspect the housing dataset
+- Identify and handle missing values
+- Remove unnecessary identifier columns
+- Explore relationships between house features and sale price
+- Visualize price patterns using charts
+- Build regression models to predict house prices
+- Evaluate model performance using R² score
+- Compare simple linear regression, multiple linear regression, pipeline-based regression, Ridge regression, and polynomial Ridge regression
+
+## Tools and Libraries Used
+
+- Python
+- Jupyter Notebook
+- Pandas
+- NumPy
+- Matplotlib
+- Seaborn
+- Scikit-learn
+
+## Analysis Workflow
+
+### 1. Data Import and Inspection
+
+The dataset was loaded into a Pandas DataFrame and inspected using common methods such as:
+
+- `head()`
+- `dtypes`
+- `describe()`
+- missing value checks
+
+### 2. Data Cleaning
+
+The data cleaning process included:
+
+- Dropping unnecessary identifier columns
+- Checking missing values
+- Replacing missing values in `bedrooms` and `bathrooms` with their column means
+- Reviewing summary statistics after cleaning
+
+### 3. Exploratory Data Analysis
+
+Several exploratory analysis steps were completed, including:
+
+- Counting houses by number of floors
+- Comparing waterfront and non-waterfront home prices
+- Exploring the relationship between square footage and house price
+- Checking correlation between numeric features and price
+
+### 4. Data Visualization
+
+The project includes visualizations such as:
+
+- Count plots
+- Box plots
+- Regression plots
+- Correlation-based analysis
+
+These visualizations help show how different house features relate to sale price.
+
+### 5. Model Development
+
+Several regression models were created to predict house prices:
+
+- Simple Linear Regression using `sqft_living`
+- Multiple Linear Regression using selected housing features
+- Pipeline-based Linear Regression
+- Ridge Regression
+- Polynomial Features with Ridge Regression
+
+### 6. Model Evaluation
+
+Model performance was evaluated using the R² score. The project compares how different feature sets and regression techniques affect prediction performance.
+
+## Key Features Used for Prediction
+
+The main predictive features used in the models include:
+
+- `floors`
+- `waterfront`
+- `lat`
+- `bedrooms`
+- `sqft_basement`
+- `view`
+- `bathrooms`
+- `sqft_living15`
+- `sqft_above`
+- `grade`
+- `sqft_living`
+
+## Skills Demonstrated
+
+- Data cleaning and preparation
+- Exploratory data analysis
+- Data visualization
+- Correlation analysis
+- Regression modeling
+- Machine learning pipeline creation
+- Model evaluation using R² score
+- Working with real-world housing data
+
+## Project Structure
+
 ```text
 king-county-house-sales-analysis/
 │
-├── king_county_house_sales_analysis.ipynb
 ├── README.md
-
+├── king_county_house_sales_analysis.ipynb
+└── housing.csv
 ```
-Note: The notebook downloads the dataset automatically from the provided source URL. If the dataset is not included in the repository, running the notebook will create `housing.csv`.
-Skills Demonstrated
-This project demonstrates:
-Data loading and inspection
-Data cleaning
-Handling missing values
-Exploratory data analysis
-Data visualization
-Correlation analysis
-Feature selection
-Linear regression modeling
-Ridge regression
-Polynomial feature transformation
-Model evaluation using R² score
-Future Improvements
-Possible improvements include:
-Add train/test evaluation for all regression models
-Use cross-validation for more reliable performance comparison
-Add residual analysis
-Try additional models such as Random Forest or Gradient Boosting
-Tune hyperparameters using GridSearchCV
-Improve feature engineering with location-based and age-based features
-Save final model predictions and evaluation charts
-Author
-Created by Saeeda as part of a data analysis and machine learning portfolio project.
+
+## How to Run This Project
+
+1. Clone or download this repository.
+2. Open the notebook in Jupyter Notebook, JupyterLab, VS Code, or Google Colab.
+3. Make sure the dataset file is available in the project folder.
+4. Install the required libraries if needed:
+
+   ```bash
+   pip install pandas numpy matplotlib seaborn scikit-learn
+   ```
+
+5. Run the notebook cells from top to bottom.
+
+## Results Summary
+
+The analysis shows that house price is strongly related to features such as living area, grade, location, bathrooms, view, and waterfront status. Regression models were used to estimate house prices, and model performance improved when multiple relevant features were included.
+
+## Possible Future Improvements
+
+- Add more advanced regression models such as Random Forest or Gradient Boosting
+- Tune model hyperparameters for better performance
+- Add interactive visualizations
+- Create a dashboard version of the project
+- Deploy the model as a simple web app
+
+## Author
+
+**Saeeda Younus**
+
+Data Analyst | Python | SQL | Excel | Power BI | Machine Learning
+
+
+When uploading to GitHub, rename it to:
+
+README.md
