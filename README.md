@@ -104,6 +104,7 @@ Model performance was evaluated using the R² score. The project compares how di
 
 ## Key Features Used for Prediction
 
+![Project Preview](2.png)![Project Preview](1.png)
 The main predictive features used in the models include:
 
 - `floors`
