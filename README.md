@@ -104,7 +104,7 @@ Model performance was evaluated using the R² score. The project compares how di
 
 ## Key Features Used for Prediction
 
-![Project Preview](2.png)![Project Preview](1.png)
+
 The main predictive features used in the models include:
 
 - `floors`
@@ -156,6 +156,7 @@ king-county-house-sales-analysis/
 ## Results Summary
 
 The analysis shows that house price is strongly related to features such as living area, grade, location, bathrooms, view, and waterfront status. Regression models were used to estimate house prices, and model performance improved when multiple relevant features were included.
+![Project Preview](2.png)![Project Preview](1.png)
 
 ## Possible Future Improvements
 
